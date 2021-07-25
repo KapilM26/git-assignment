@@ -1,10 +1,14 @@
 import javax.lang.model.util.ElementScanner6;
+import java.util.Map;
+import java.util.TreeMap;
 
 public class fns {
     public static void main(String[] args) throws Exception {
         fibonacci(7);
         System.out.println();
         fizzbuzz(15);
+        System.out.println();
+        frequencyOfWords();
     }
 
     public static void fibonacci(int n) {
@@ -30,6 +34,24 @@ public class fns {
             else
                 System.out.print(i + " ");
 
+        }
+    }
+
+    public static void frequencyOfWords(){
+        String str="quick fox lazy dog quick donkey fire fox";
+        System.out.println(str);
+        String[] sArr=str.split(" ");
+        Map<String, Integer> m=new TreeMap<>();
+
+        for(int i=0;i<sArr.length;i++) {
+            if (m.containsKey(sArr[i])) {
+                m.put(sArr[i], m.get(sArr[i]) + 1);
+            } else {
+                m.put(sArr[i], 1);
+            }
+        }
+        for(Map.Entry<String,Integer> e: m.entrySet()) {
+            System.out.print(e.getKey()+": "+e.getValue()+" ");
         }
     }
 }
